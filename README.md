@@ -4,10 +4,10 @@
 ## Install
 
 ```bash
-npm install -g semantic-release-cli
+npm install -g semantic-sf-cli
 
 cd your-module
-semantic-release-cli setup
+semantic-sf-cli setup
 ```
 
 ![dialogue](https://cloud.githubusercontent.com/assets/908178/8766357/f3eadaca-2e34-11e5-8ebb-d40b9ae613d7.png)
