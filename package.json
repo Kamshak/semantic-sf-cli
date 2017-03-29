@@ -15,7 +15,7 @@
     "semantic-sf-cli": "./bin/semantic-sf-cli.js"
   },
   "bugs": {
-    "url": "https://github.com/Kamshak/cli/issues"
+    "url": "https://github.com/Kamshak/semantic-sf-cli/issues"
   },
   "dependencies": {
     "base32": "0.0.6",
@@ -55,7 +55,7 @@
     "node": ">=4",
     "npm": ">=3"
   },
-  "homepage": "https://github.com/Kamshak/cli",
+  "homepage": "https://github.com/Kamshak/semantic-sf-cli",
   "keywords": [
     "author",
     "automation",
@@ -72,7 +72,7 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kamshak/cli.git"
+    "url": "https://github.com/Kamshak/semantic-sf-cli.git"
   },
   "scripts": {
     "build": "rimraf dist && mkdirp dist && babel src --out-dir dist",
