@@ -24,7 +24,8 @@ const knownOptions = {
   help: Boolean,
   keychain: Boolean,
   'ask-for-passwords': Boolean,
-  'gh-token': String
+  'gh-token': String,
+  'sf-apikey': String
 }
 
 const shortHands = {
