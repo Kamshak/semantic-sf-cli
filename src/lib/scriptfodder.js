@@ -1,7 +1,4 @@
-const crypto = require('crypto')
-
 const _ = require('lodash')
-const base32 = require('base32')
 const inquirer = require('inquirer')
 const request = require('request-promise').defaults({
   json: true,
@@ -14,17 +11,17 @@ const log = require('npmlog')
 
 const passwordStorage = require('./password-storage')('scriptfodder')
 
-function getAllSfScripts(info) {
+function getAllSfScripts (info) {
   return request(`https://scriptfodder.com/api/scripts/?api_key=${info.scriptfodder.apiKey}`)
     .then(body => {
-      if (body.status != 'success') {
+      if (body.status !== 'success') {
         return Promise.reject('Could not load SF Scripts')
       }
       return body.scripts
     })
 }
 
-async function askForSfScript(info) {
+async function askForSfScript (info) {
   const scripts = await getAllSfScripts(info)
   const answers = await inquirer.prompt([{
     name: 'scriptId',
@@ -35,10 +32,10 @@ async function askForSfScript(info) {
         name: script.name,
         value: script.id
       }
-    }),
+    })
   }])
 
-  return answers.scriptId;
+  return answers.scriptId
 }
 
 module.exports = async function (pkg, info) {
@@ -55,14 +52,14 @@ module.exports = async function (pkg, info) {
     name: 'apiKey',
     message: 'What is your Scripfodder API Key? (https://scriptfodder.com/dashboard/settings/api/new)',
     validate: _.ary(_.bind(validator.isLength, validator, _, 1), 1),
-    when: answers => !info.options.keychain || info.options['ask-for-passwords'] || !passwordStorage.get("key")
+    when: answers => !info.options.keychain || info.options['ask-for-passwords'] || !passwordStorage.get('key')
   }])
 
-  answers.apiKey = answers.apiKey || passwordStorage.get("key")
+  answers.apiKey = answers.apiKey || passwordStorage.get('key')
   info.scriptfodder = answers
 
   if (info.options.keychain) {
-    passwordStorage.set("key", info.scriptfodder.password)
+    passwordStorage.set('key', info.scriptfodder.password)
   }
 
   const scriptId = await askForSfScript(info)

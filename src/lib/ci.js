@@ -1,6 +1,5 @@
 const _ = require('lodash')
 const inquirer = require('inquirer')
-const validator = require('validator')
 
 const cis = {
   'Other (prints tokens)': (pkg, info) => {

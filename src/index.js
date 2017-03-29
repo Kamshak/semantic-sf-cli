@@ -24,7 +24,7 @@ const knownOptions = {
   help: Boolean,
   keychain: Boolean,
   'ask-for-passwords': Boolean,
-  'gh-token': String,
+  'gh-token': String
 }
 
 const shortHands = {
@@ -129,8 +129,8 @@ Aliases:
   }
 
   pkg.release = pkg.release || {}
-  pkg.release.getLastRelease = "last-release-git"
-  pkg.release.verifyConditions = "semantic-release-noop"
+  pkg.release.getLastRelease = 'last-release-git'
+  pkg.release.verifyConditions = 'semantic-release-noop'
 
   log.verbose('Writing `package.json`.')
   writeFileSync('package.json', `${JSON.stringify(pkg, null, 2)}\n`)
