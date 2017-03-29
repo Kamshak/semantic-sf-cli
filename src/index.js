@@ -117,13 +117,13 @@ Aliases:
     'semantic-release-noop'
   ]
   try {
-    dependencies.forEach(dep => {
+    for (let dep of dependencies) {
       const {'dist-tags': distTags} = await request('https://registry.npmjs.org/' + dep)
 
       pkg.devDependencies = pkg.devDependencies || {}
       pkg.devDependencies[dep] = `^${distTags['latest']}`
       log.info(`added: ${dep}@^${distTags['latest']}`)
-    })
+    }
   } catch (e) {
     log.error('Could not get dependency version.', e)
   }
