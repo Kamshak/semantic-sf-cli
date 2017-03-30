@@ -15,7 +15,7 @@ function getAllSfScripts (info) {
   return request(`https://scriptfodder.com/api/scripts/?api_key=${info.scriptfodder.apiKey}`)
     .then(body => {
       if (body.status !== 'success') {
-        return Promise.reject('Could not load SF Scripts')
+        throw new Error('Could not load SF Scripts')
       }
       return body.scripts
     })
