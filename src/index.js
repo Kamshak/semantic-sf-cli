@@ -104,10 +104,10 @@ Aliases:
   }
 
   try {
-    const {'dist-tags': distTags} = await request('https://registry.npmjs.org/semantic-release')
+    const {'dist-tags': distTags} = await request('https://registry.npmjs.org/semantic-sf-release')
 
     pkg.devDependencies = pkg.devDependencies || {}
-    pkg.devDependencies['semantic-release'] = `^${distTags[info.options.tag]}`
+    pkg.devDependencies['semantic-sf-release'] = `^${distTags[info.options.tag]}`
   } catch (e) {
     log.error('Could not get latest `semantic-sf-release` version.', e)
   }
