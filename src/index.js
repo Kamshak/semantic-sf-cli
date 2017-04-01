@@ -115,7 +115,8 @@ Aliases:
   const dependencies = [
     'dotenv',
     'last-release-git',
-    'semantic-release-noop'
+    'semantic-release-noop',
+    'scriptfodder-publish'
   ]
   try {
     for (let dep of dependencies) {
