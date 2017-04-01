@@ -46,7 +46,8 @@ module.exports = function (pkg, info) {
     '*.log',
     '.DS_Store',
     '*.tmp',
-    '.gmodignore'
+    '.gmodignore',
+    '*.tmp.md'
   ].join('\n'))
   log.info('Wrote .gmodignore')
 }
