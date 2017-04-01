@@ -44,7 +44,9 @@ module.exports = function (pkg, info) {
     '.editorconfig',
     '.npmrc',
     '*.log',
-    '.DS_Store'
+    '.DS_Store',
+    '*.tmp',
+    '.gmodignore'
   ].join('\n'))
   log.info('Wrote .gmodignore')
 }
