@@ -42,17 +42,19 @@ module.exports = function (pkg, info) {
   writeFileSync('.env', ini.stringify(envContents))
   log.info('Wrote environment variables to .env file.')
 
-  writeFileSync('.gmodignore', [
-    'node_modules',
-    'package.json',
-    '.gitignore',
-    '.editorconfig',
-    '.npmrc',
-    '*.log',
-    '.DS_Store',
-    '*.tmp',
-    '.gmodignore',
-    '*.tmp.md'
-  ].join('\n'))
-  log.info('Wrote .gmodignore')
+  if (!existsSync('.gmodignore')) {
+    writeFileSync('.gmodignore', [
+      'node_modules',
+      'package.json',
+      '.gitignore',
+      '.editorconfig',
+      '.npmrc',
+      '*.log',
+      '.DS_Store',
+      '*.tmp',
+      '.gmodignore',
+      '*.tmp.md'
+    ].join('\n'))
+    log.info('Wrote .gmodignore')
+  }
 }
