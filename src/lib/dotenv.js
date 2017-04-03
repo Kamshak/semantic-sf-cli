@@ -44,7 +44,7 @@ module.exports = function (pkg, info) {
 
   if (!existsSync('.gmodignore')) {
     writeFileSync('.gmodignore', [
-      'node_modules',
+      'node_modules/**',
       'package.json',
       '.gitignore',
       '.editorconfig',
@@ -54,7 +54,8 @@ module.exports = function (pkg, info) {
       '*.tmp',
       '.gmodignore',
       '*.tmp.md',
-      '.env'
+      '.env',
+      'yarn.lock'
     ].join('\n'))
     log.info('Wrote .gmodignore')
   }
