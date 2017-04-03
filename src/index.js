@@ -93,7 +93,7 @@ Aliases:
   pkg.version = '0.0.0-development'
 
   pkg.scripts = pkg.scripts || {}
-  pkg.scripts['sf-release'] = 'semantic-release pre && semantic-release genlog && scriptfodder-publish && semantic-release post'
+  pkg.scripts['sf-release'] = 'semantic-sf-release pre && semantic-sf-release genlog && scriptfodder-publish && semantic-sf-release post'
 
   pkg.repository = pkg.repository || {
     type: 'git',
