@@ -44,22 +44,21 @@ module.exports = async function (pkg, info) {
       apiKey: info.options['sf-apikey']
     }
     log.info('Using Scriptfodder token from command line argument.')
-    return
-  }
+  } else {
+    const answers = await inquirer.prompt([{
+      type: 'input',
+      name: 'apiKey',
+      message: 'What is your Scripfodder API Key? (https://scriptfodder.com/dashboard/settings/api/new)',
+      validate: _.ary(_.bind(validator.isLength, validator, _, 1), 1),
+      when: answers => !info.options.keychain || info.options['ask-for-passwords'] || !passwordStorage.get('key')
+    }])
 
-  const answers = await inquirer.prompt([{
-    type: 'input',
-    name: 'apiKey',
-    message: 'What is your Scripfodder API Key? (https://scriptfodder.com/dashboard/settings/api/new)',
-    validate: _.ary(_.bind(validator.isLength, validator, _, 1), 1),
-    when: answers => !info.options.keychain || info.options['ask-for-passwords'] || !passwordStorage.get('key')
-  }])
+    answers.apiKey = answers.apiKey || passwordStorage.get('key')
+    info.scriptfodder = answers
 
-  answers.apiKey = answers.apiKey || passwordStorage.get('key')
-  info.scriptfodder = answers
-
-  if (info.options.keychain) {
-    passwordStorage.set('key', info.scriptfodder.password)
+    if (info.options.keychain) {
+      passwordStorage.set('key', info.scriptfodder.password)
+    }
   }
 
   const scriptId = await askForSfScript(info)
