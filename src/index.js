@@ -83,6 +83,7 @@ Aliases:
     await require('./lib/github')(pkg, info)
     await require('./lib/scriptfodder')(pkg, info)
     await require('./lib/ci')(pkg, info)
+    await require('./lib/git-tag')(pkg, info)
     require('./lib/dotenv')(pkg, info)
   } catch (err) {
     log.error(err)
@@ -136,5 +137,6 @@ Aliases:
 
   log.verbose('Writing `package.json`.')
   writeFileSync('package.json', `${JSON.stringify(pkg, null, 2)}\n`)
+
   log.info('Done.')
 }
